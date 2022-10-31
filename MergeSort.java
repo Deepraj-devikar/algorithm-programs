@@ -1,4 +1,4 @@
-public class MergeSort {
+public class MergeSort <Type extends Comparable>{
 	Node head;
 	Node tail;
 	
@@ -7,7 +7,7 @@ public class MergeSort {
 		tail = null;
 	}
 	
-	public void append(String item) {
+	public void append(Type item) {
 		Node newNode  = new Node(item);
 		if(isEmpty()) head = tail = newNode;
 		else tail = tail.next = newNode;
@@ -28,7 +28,7 @@ public class MergeSort {
 		return sortedMerge(doMergeSort(newHead), doMergeSort(nextOfMiddle));
 	}
 
-	private Node sortedMerge(Node left, Node right) {
+	private Node sortedMerge(Node<Type> left, Node right) {
 		if(left == null) return right;
 		if(right == null) return left;
 		Node newHead = null;
@@ -78,6 +78,22 @@ public class MergeSort {
 		mergeSort.append("Babita");
 		System.out.println("Append Babita after sorting");
 		System.out.println(mergeSort);
+
+		MergeSort intSort = new MergeSort();
+		intSort.append(5);
+		intSort.append(2);
+		intSort.append(8);
+		intSort.append(6);
+		intSort.append(4);
+		intSort.append(7);
+		System.out.println("Before sorting");
+		System.out.println(intSort);
+		intSort.sort();
+		System.out.println("After sorting");
+		System.out.println(intSort);
+		intSort.append(4);
+		System.out.println("Append 4 after sorting");
+		System.out.println(intSort);
 	}
 
 }
