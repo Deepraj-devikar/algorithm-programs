@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 public class InsertionSort {
 
-	public void insertAndSort(String[] words, String word, int i) {
+	public <Type extends Comparable<Type>> void insertAndSort(Type[] words, Type word, int i) {
 		while(i > 0) {
-			if(word.compareToIgnoreCase(words[i-1]) < 0) {
+			if(word.compareTo(words[i-1]) < 0) {
 				words[i] = words[--i];
 				continue;
 			}
