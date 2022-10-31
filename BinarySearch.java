@@ -23,11 +23,11 @@ public class BinarySearch {
 		return words;
 	}
 	
-	public void sortWords(String[] words) {
+	public <Type extends Comparable<Type>> void sortWords(Type[] words) {
 		for(int i = 0; i < words.length-1; i++) {
 			for(int j = 0; j < words.length-i-1; j++) {
-				if(words[j].compareToIgnoreCase(words[j+1]) > 0) {
-					String tempWord = words[j];
+				if(words[j].compareTo(words[j+1]) > 0) {
+					Type tempWord = words[j];
 					words[j] = words[j+1];
 					words[j+1] = tempWord;
 				}
@@ -35,19 +35,19 @@ public class BinarySearch {
 		}
 	}
 	
-	public boolean search(String wordToSearch, String[] words) {
+	public <Type extends Comparable<Type>> boolean search(Type wordToSearch, Type[] words) {
 		return doBinarySearch(wordToSearch, words, 0, words.length - 1);
 	}
 	
-	private boolean doBinarySearch(String wordToSearch, String[] words, int low, int high) {
+	private <Type extends Comparable<Type>> boolean doBinarySearch(Type wordToSearch, Type[] words, int low, int high) {
 		if(low > high) {
 			return false;
 		}
 		int mid = (low + high) / 2;
-		if(words[mid].trim().equalsIgnoreCase(wordToSearch)) {
+		if(words[mid].equals(wordToSearch)) {
 			return true;
 		}
-		if(words[mid].trim().compareToIgnoreCase(wordToSearch) < 0) {
+		if(words[mid].compareTo(wordToSearch) < 0) {
 			return doBinarySearch(wordToSearch, words, mid + 1, high);
 		}
 		return doBinarySearch(wordToSearch, words, low, mid - 1);
