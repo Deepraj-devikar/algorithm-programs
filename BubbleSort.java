@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 public class BubbleSort {
 
-	public void sort(int[] numbers) {
+	public <Type extends Comparable<Type>> void sort(Type[] numbers) {
 		for(int i = 0; i < numbers.length - 1; i++) {
 			for(int j = 0; j < numbers.length - 1 - i; j++) {
-				if(numbers[j] > numbers[j+1]) {
-					int tempNumber = numbers[j];
+				if(numbers[j].compareTo(numbers[j+1]) > 0) {
+					Type tempNumber = numbers[j];
 					numbers[j] = numbers[j+1];
 					numbers[j+1] = tempNumber;
 				}
@@ -32,7 +32,7 @@ public class BubbleSort {
 			}
 		}
 
-		int numbers[] = new int[numberCounts];
+		Integer numbers[] = new Integer[numberCounts];
 		System.out.println("Enter "+numberCounts+" numbers from here : ");
 		for(int i = 0; i < numberCounts; i++) {
 			System.out.print("Enter "+(i+1)+" number : ");
